@@ -1,5 +1,6 @@
 package tech.devinhouse.ProjetoVeiculos.datainit;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ public class DataLoader implements CommandLineRunner {
     private MultaRepository multaRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         Veiculo veiculo1 = new Veiculo("ABC-1234", TipoVeiculo.AUTOMOVEL, "Bat-Movel", 2022, "preto");
         Veiculo veiculo2 = new Veiculo("BCA-4321", TipoVeiculo.ONIBUS, "Enterprise", 1960, "prata");
@@ -39,7 +41,9 @@ public class DataLoader implements CommandLineRunner {
         // Imprimir veículos e multas
         veiculoRepository.findAll().forEach(veiculo -> {
             System.out.println(veiculo);
-            veiculo.getMultas().forEach(System.out::println);
+            if (veiculo.getMultas() != null) {
+                veiculo.getMultas().forEach(System.out::println);
+            }
         });
     }
 }

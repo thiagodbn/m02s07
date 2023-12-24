@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Veiculo {
     private String cor;
 
     @OneToMany(mappedBy = "veiculo")
-    private List<Multa> multas;
+    private List<Multa> multas = new ArrayList<>();
 
     public Veiculo(String placa, TipoVeiculo tipo, String nome, Integer anoFabricacao, String cor) {
         this.placa = placa;
