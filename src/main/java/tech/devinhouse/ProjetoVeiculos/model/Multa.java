@@ -23,4 +23,11 @@ public class Multa {
     @ManyToOne
     @JoinColumn(name = "placa_veiculo")
     private Veiculo veiculo;
+
+    public Multa(String motivo, String local, float valor, Veiculo veiculo) {
+        this.motivo = motivo;
+        this.local = local;
+        this.valor = valor;
+        this.veiculo = veiculo;
+    }
 }
