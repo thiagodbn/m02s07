@@ -24,4 +24,12 @@ public class Veiculo {
 
     @OneToMany(mappedBy = "veiculo")
     private List<Multa> multas;
+
+    public Veiculo(String placa, TipoVeiculo tipo, String nome, Integer anoFabricacao, String cor) {
+        this.placa = placa;
+        this.tipo = tipo;
+        this.nome = nome;
+        this.anoFabricacao = anoFabricacao;
+        this.cor = cor;
+    }
 }
